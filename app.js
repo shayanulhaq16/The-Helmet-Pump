@@ -32,7 +32,7 @@ const displayData = async () => {
                     <span class="old-price">$${Math.ceil((element.price / (1 - element.discountPercentage / 100)))}</span>
                 </div>
 
-                <a href="product-detail.html" class="add-cart">
+                <a href="product-detail.html?id=${element.id}" class="add-cart">
                  View Details
                  </a>
 

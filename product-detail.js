@@ -4,11 +4,13 @@ const product = document.querySelector(".product-detail");
 
 const showDetail = async () => {
 
-   
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    // console.log(id);
     
     
 
-    const data = await fetch(`https://dummyjson.com/products/1`);
+    const data = await fetch(`https://dummyjson.com/products/${id}`);
     const convertedData = await data.json();
 
 
