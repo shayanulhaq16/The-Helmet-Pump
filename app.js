@@ -29,19 +29,42 @@ const displayData = async () => {
 
                 <div class="price">
                     $${element.price}
-                    <span class="old-price">$${Math.round((element.price / (1 - element.discountPercentage / 100)))}</span>
+                    <span class="old-price">$${Math.ceil((element.price / (1 - element.discountPercentage / 100)))}</span>
                 </div>
 
-                <button class="add-cart">
-                    🛒 &nbsp; Add to Cart
-                </button>
+                <a href="product-detail.html" class="add-cart">
+                 View Details
+                 </a>
 
             </div>
         
         `
-        
+
     }
-    
+
 }
 
 displayData();
+
+const headerContainer = document.querySelector(".display-header");
+
+const displayHeader = async () => {
+    const response = await fetch("header.html");
+    const header = await response.text();
+
+    headerContainer.innerHTML = header;
+};
+
+displayHeader();
+
+const footerContainer = document.querySelector(".display-footer");
+
+const displayFooter = async () => {
+
+    const footerData = await fetch("footer.html");
+    const footer = await footerData.text();
+
+    footerContainer.innerHTML = footer;
+}
+
+displayFooter();

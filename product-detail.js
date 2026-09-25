@@ -3,9 +3,13 @@ const product = document.querySelector(".product-detail");
 
 
 const showDetail = async () => {
-    const data = await fetch("https://dummyjson.com/products/1");
+
+   
+    
+    
+
+    const data = await fetch(`https://dummyjson.com/products/1`);
     const convertedData = await data.json();
-    console.log(convertedData);
 
 
     product.innerHTML = ` 
@@ -67,7 +71,7 @@ const showDetail = async () => {
                     </div>
 
                     <div class="old-price">
-                        $${(Math.round(convertedData.price / (1 - convertedData.discountPercentage / 100)))}.00
+                        $${(Math.ceil(convertedData.price / (1 - convertedData.discountPercentage / 100)))}.00
                     </div>
 
                     <div class="discount">
@@ -184,17 +188,31 @@ showDetail();
 
 
 
+const headerContainer = document.querySelector(".display-header");
+
+const displayHeader = async () => {
+
+    const response = await fetch("header.html");
+    const header = await response.text();
+    
+    headerContainer.innerHTML = header;
+    
 
 
 
+};
+
+displayHeader();
 
 
+const footerContainer = document.querySelector(".display-footer");
 
+const displayFooter = async () => {
 
+    const footerData = await fetch("footer.html");
+    const footer = await footerData.text();
 
+    footerContainer.innerHTML = footer;
+}
 
-
-
-
-
-
+displayFooter();
